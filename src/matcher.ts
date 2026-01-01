@@ -7,7 +7,7 @@ const SCORE_SENIORITY = 2;
 const SCORE_LOCATION = 3;
 const SCORE_REMOTE = 2;
 
-const MAX_RESULTS = 10;
+const MAX_RESULTS = 8;
 
 /**
  * Returns true when the query has no explicit attributes set.
