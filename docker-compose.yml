@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jobbot
+      POSTGRES_PASSWORD: jobbot
+      POSTGRES_DB: jobbot
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  bot:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN}
+      DATABASE_URL: postgres://jobbot:jobbot@db:5432/jobbot
+      OPERATOR_CHAT_ID: ${OPERATOR_CHAT_ID}
+      SCRAPER_INTERVAL_HOURS: ${SCRAPER_INTERVAL_HOURS:-6}
+      BOT_USERNAME: ${BOT_USERNAME}
+      ADZUNA_APP_ID: ${ADZUNA_APP_ID}
+      ADZUNA_APP_KEY: ${ADZUNA_APP_KEY}
+
+volumes:
+  postgres_data:
