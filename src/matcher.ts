@@ -1,7 +1,7 @@
 import type { JobListing, MatchResult, ParsedQuery, PreferenceProfile } from "./types";
 
 // Scoring weights
-const SCORE_TECH_TAG = 2;
+const SCORE_TECH_TAG = 3;
 const SCORE_ROLE_TYPE = 3;
 const SCORE_SENIORITY = 2;
 const SCORE_LOCATION = 3;
