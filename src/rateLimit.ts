@@ -4,7 +4,7 @@
  */
 
 const MAX_REQUESTS = 20;
-const WINDOW_MS = 60_000; // 60 seconds
+const WINDOW_MS = 60_000; // 1 minute
 const CLEANUP_INTERVAL_MS = 5 * 60_000; // clean up every 5 minutes
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
