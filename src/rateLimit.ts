@@ -3,7 +3,7 @@
  * Max 20 requests per user per 60-second fixed window.
  */
 
-const MAX_REQUESTS = 20;
+const MAX_REQUESTS = 15;
 const WINDOW_MS = 60_000; // 60 seconds
 const CLEANUP_INTERVAL_MS = 5 * 60_000; // clean up every 5 minutes
 
