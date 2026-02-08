@@ -46,7 +46,7 @@ function scoreListing(listing: JobListing, query: ParsedQuery): number {
   let score = 0;
   const titleLower = listing.title.toLowerCase();
 
-  // Tech tags: score per matching tag
+  // Tech tags: +2 per matching tag
   if (query.techStack.length > 0) {
     const queryTech = query.techStack.map((t) => t.toLowerCase());
     for (const tag of listing.techTags) {
