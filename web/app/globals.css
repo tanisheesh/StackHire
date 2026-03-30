@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-syne: "Syne", sans-serif;
+}
+
+.font-sans { font-family: var(--font-inter); }
+.font-display { font-family: var(--font-syne); }
