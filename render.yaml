@@ -8,9 +8,7 @@ services:
       - key: BOT_TOKEN
         sync: false
       - key: DATABASE_URL
-        fromDatabase:
-          name: stackhire-db
-          property: connectionString
+        sync: false  # Paste Supabase connection string here
       - key: OPERATOR_CHAT_ID
         sync: false
       - key: SCRAPER_INTERVAL_HOURS
@@ -32,7 +30,3 @@ services:
       - key: NEXT_PUBLIC_BOT_USERNAME
         value: StackHireBot
 
-databases:
-  - name: stackhire-db
-    databaseName: jobbot
-    user: jobbot
