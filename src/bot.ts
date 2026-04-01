@@ -1,4 +1,5 @@
 import { Telegraf } from "telegraf";
+import { message } from "telegraf/filters";
 import type { BotConfig, JobListing, ParsedQuery, PreferenceProfile } from "./types";
 import type { DbClient } from "./db/client";
 import { parseQuery } from "./parser";
