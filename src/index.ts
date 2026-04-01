@@ -3,6 +3,7 @@ import { createBot } from "./bot";
 import { startScheduler } from "./scheduler";
 import { runScraper } from "./scraper/base";
 import { AdzunaScraper } from "./scraper/portals/adzuna";
+import { createServer } from "http";
 
 // ---------------------------------------------------------------------------
 // Load config from environment variables (Requirements 11.3)
@@ -91,6 +92,31 @@ startScheduler(
   },
   scraperRun
 );
+
+// ---------------------------------------------------------------------------
+// Start HTTP server for Render health checks
+// ---------------------------------------------------------------------------
+const PORT = process.env.PORT || 3000;
+const server = createServer((req, res) => {
+  if (req.url === "/health") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ status: "ok", timestamp: new Date().toISOString() }));
+  } else {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Bot is running");
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(
+    JSON.stringify({
+      level: "info",
+      message: "HTTP server started",
+      port: PORT,
+      timestamp: new Date().toISOString(),
+    })
+  );
+});
 
 // ---------------------------------------------------------------------------
 // Launch bot (Requirements 1.1)
